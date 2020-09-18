@@ -1,0 +1,35 @@
+
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/14/2020 03:23:54 PM
+// Design Name: 
+// Module Name: FullAdder
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+`timescale 1ns/1ns
+
+module FullAdder(input a,b,c, output sum1, carry_out);
+
+wire w1,w2,w3;
+assign sum1=a^b^c;
+assign w1=a&b;
+assign w2=a&c;
+assign w3=c&b;
+assign carry_out=w1|w2|w3;
+
+endmodule
+

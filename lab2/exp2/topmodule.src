@@ -1,0 +1,64 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/14/2020 06:44:32 PM
+// Design Name: 
+// Module Name: TOPM_neg
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/14/2020 03:55:53 PM
+// Design Name: 
+// Module Name: topM
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module TOPM_neg(input clk,input uart_in,output [3:0] sAnode,
+ output  [3:0] Anode,  output [6:0] LED_out ,output [7:0]out1 );
+ 
+ 
+//    wire [7:0]out1;
+    
+  
+    
+    
+    UART_receiver_multiple_Keys  uart(
+           clk, // input clock
+           uart_in, // input receiving data line
+           out1 // output
+        );
+      
+       
+        seven_opt S( clk, out1, Anode, sAnode,   LED_out);
+endmodule

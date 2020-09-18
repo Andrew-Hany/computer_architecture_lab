@@ -1,0 +1,45 @@
+// file: topM.v
+// author: @andrewhany
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/14/2020 03:55:53 PM
+// Design Name: 
+// Module Name: topM
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module topM(input clk,input uart_in,output [3:0] sAnode, output  [3:0] Anode,  
+output [6:0] LED_out, output [7:0] out1  );
+ 
+ 
+//    wire [7:0]out1;
+    wire cin;
+    assign cin=0;
+    wire [3:0]sum_ripple;
+    wire cout_ripple;
+    wire[4:0] out;
+    UART_receiver_multiple_Keys  uart(
+           clk, // input clock
+           uart_in, // input receiving data line
+           out1 // output
+        );
+        ripple_carry RC( out1[3:0],out1[7:4], cin,sum_ripple,cout_ripple);
+        assign out[4:0]= {cout_ripple,sum_ripple};// {cout_ripple,sum_ripple}
+        seven S( clk, out, Anode, sAnode,   LED_out);
+endmodule
+

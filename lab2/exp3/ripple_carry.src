@@ -1,0 +1,15 @@
+// file: ripple_carry .v
+// author: @andrewhany
+`timescale 1ns/1ns
+
+module ripple_carry( x_ripple,y_ripple, cin,sum_ripple,cout_ripple);
+input [3:0] x_ripple,y_ripple;
+input cin;
+output [3:0] sum_ripple;
+output cout_ripple;
+wire [2:0]c;
+FullAdder add1(x_ripple[0],y_ripple[0],cin,sum_ripple[0],c[0]);
+FullAdder add2(x_ripple[1],y_ripple[1],c[0],sum_ripple[1],c[1]);
+FullAdder add3(x_ripple[2],y_ripple[2],c[1],sum_ripple[2],c[2]);
+FullAdder add4(x_ripple[3],y_ripple[3],c[2],sum_ripple[3],cout_ripple);
+endmodule
