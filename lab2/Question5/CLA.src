@@ -1,0 +1,37 @@
+// file: CLA.v
+// author: @andrewhany
+
+`timescale 1ns / 1ps
+
+module CLA( input [3:0] x , input [3:0] y , output [4:0] res );
+wire [4:0] C;
+wire [3:0] G,P,sum;
+
+FullAdder adder1 (x[0],y[0],C[0],sum[0]);
+FullAdder adder2 (x[1],y[1],C[1],sum[1]);
+FullAdder adder3 (x[2],y[2],C[2],sum[2]);
+FullAdder adder4 (x[3],y[3],C[3],sum[3]);
+
+ 
+
+assign G[0]= x[0] & y[0];
+assign G[1]= x[1] & y[1];
+assign G[2]= x[2] & y[2];
+assign G[3]= x[3] & y[3];
+
+
+assign P[0]= x[0] | y[0];
+assign P[1]= x[1] | y[1];
+assign P[2]= x[2] | y[2];
+assign P[3]= x[3] | y[3];
+
+
+assign C[0]=1'b0;
+assign C[1]= G[0] | (P[0] & C[0]);
+assign C[2]= G[1] | (P[1] & C[1]);
+assign C[3]= G[2] | (P[2] & C[2]);
+assign C[4]= G[3] | (P[3] & C[3]);
+
+assign res ={C[4],sum};
+endmodule
+
