@@ -1,0 +1,41 @@
+// file: asadada_tb.v
+// author: @andrewhany
+// Testbench asadada_tb
+
+`timescale 1ns / 1ps
+
+module registertesting() ;
+
+reg clk;
+reg S;
+reg sh;
+reg [31:0] in;
+reg rst;
+wire [31:0] Q ;
+OneReg  regis(clk, S,sh, in, rst,Q);
+initial 
+begin
+clk = 0;
+ forever #10
+clk=~clk;
+end
+
+initial
+ begin 
+
+ S=1;
+ in=3;
+ rst=0;
+ 
+ #100
+ S=0;
+ sh=1;
+ #100
+ S=1;
+ in=0;
+
+ 
+
+ 
+end
+endmodule
