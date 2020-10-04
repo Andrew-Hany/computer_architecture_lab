@@ -1,0 +1,31 @@
+`timescale 1ns / 1ps
+
+
+
+module ALU_TB( );
+reg [31:0] in1;
+ reg [31:0]in2;
+reg [3:0] aluSe;
+wire[31:0] result;
+ wire zero =0;
+
+ ALU alu(
+ in1, in2, aluSe,
+ result,  zero );
+ 
+ initial
+ begin 
+ in1=32'd2359;
+ in2=32'd2345;
+ aluSe=4'b0000; //and
+ #10
+ 
+  aluSe=4'b0001;//or
+ #10
+ 
+  aluSe=4'b0010; //add
+ #100
+   aluSe=4'b0110;//sub
+ end 
+endmodule
+

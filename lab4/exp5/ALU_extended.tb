@@ -1,0 +1,47 @@
+`timescale 1ns / 1ps
+
+
+
+module ALU_TB( );
+reg [31:0] in1;
+ reg [31:0]in2;
+reg [3:0] aluSe;
+wire[31:0] result;
+ wire zero =0;
+ wire flag;
+
+ ALU alu(
+ in1, in2, aluSe,
+ result, zero,flag);
+ 
+ initial
+ begin 
+ 
+  in1=32'hFFFFFFFF;
+ in2=32'h1; //111111111+1=1000000000000
+ aluSe=4'b0010;
+ #100
+   in1=32'hFFFFFFFF;
+in2=~32'h1+1; // 11111111111 -(-1) =
+aluSe=4'b0110;
+ #100
+ in1=32'd20;
+ in2=32'd1;
+ aluSe=4'b0100; 
+ #100
+ in1=32'd200;
+  in2=32'd1;
+ aluSe=4'b1111; 
+ #100
+ in1=~32'd4+1;//1111111111...100
+  in2=32'd1; //-4/2=-2
+ aluSe=4'b1100; 
+#100
+in1 = 4'b1010;
+in2 = 4'b1100;
+aluSe= 4'b0011;
+//#100
+   
+ end 
+endmodule
+

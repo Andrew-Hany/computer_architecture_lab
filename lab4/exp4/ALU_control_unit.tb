@@ -1,0 +1,35 @@
+`timescale 1ns / 1ps
+
+module ALU_Control_Unit();
+reg [1:0]aluop; reg [14:12]intr1;
+reg  intr2 ;
+wire[3:0]aluS;
+
+ALU_Control alu(aluop, intr1,  intr2 ,aluS);
+
+initial 
+begin
+aluop=2'b00;
+
+#100
+aluop=2'b01;
+
+#100
+aluop=2'b10;
+intr1 = 3'b000;
+intr2 = 1'b0;
+#100
+aluop=2'b10;
+intr1 = 3'b000;
+intr2 = 1'b1;
+#100
+aluop=2'b10;
+intr1 = 3'b111;
+intr2 = 1'b0;
+#100
+aluop=2'b10;
+intr1 = 3'b110;
+intr2 = 1'b0;
+end
+endmodule
+

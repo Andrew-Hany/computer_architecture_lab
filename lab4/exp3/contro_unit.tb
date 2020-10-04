@@ -1,0 +1,49 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/28/2020 06:52:04 PM
+// Design Name: 
+// Module Name: Control_Unit_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module Control_Unit_tb( );
+
+reg [6:2]opcode;
+ wire branch;
+ wire memread;
+ wire memtoreg;
+ wire [1:0]aluop;
+ wire memwrite; 
+ wire  alusrc;
+ wire regwrite;
+ 
+ Control_unit unitt(opcode, branch,  memread,  memtoreg,aluop,memwrite,alusrc, regwrite );
+initial
+
+begin
+opcode = 5'b01100;
+#100
+opcode = 5'b01000;
+#100
+opcode = 5'b00000;
+#100
+opcode = 5'b11000;
+end
+
+
+endmodule
+
